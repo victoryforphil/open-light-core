@@ -1,0 +1,70 @@
+apply plugin: 'cpp'
+model {
+    buildTypes {
+        debug
+        release
+    }
+    repositories {
+        libs(PrebuiltLibraries) {
+            cscore {
+                headers.srcDir "libs/cscore/headers"
+                binaries.withType(StaticLibraryBinary) {
+                    def libName = targetPlatform.operatingSystem.windows ? 'util.lib' : 'libcscore.a'
+                    staticLibraryFile = file("libs/cscore/linuxx86-64/libcscore.a")
+                }
+                
+            }
+
+            ntcore {
+                headers.srcDir "libs/ntcore/headers"
+                binaries.withType(StaticLibraryBinary) {
+                    def libName = targetPlatform.operatingSystem.windows ? 'util.lib' : 'libcscore.a'
+                    staticLibraryFile = file("libs/ntcore/linuxx86-64/libntcore.a")
+                }
+                
+            }
+
+            opencv {
+                headers.srcDir "libs/opencv-cpp/headers"
+                binaries.withType(StaticLibraryBinary) {
+                    def libName = targetPlatform.operatingSystem.windows ? 'util.lib' : 'libcscore.a'
+                    staticLibraryFile = file("libs/opencv-cpp/linuxx86-64/linux/x86-64/static/libopencv320.a")
+
+                }
+                
+            }
+
+            wpiutil {
+                headers.srcDir "libs/wpiutil-cpp/headers"
+                binaries.withType(StaticLibraryBinary) {
+                    def libName = targetPlatform.operatingSystem.windows ? 'util.lib' : 'libcscore.a'
+                    staticLibraryFile = file("libs/wpiutil-cpp/linuxx86-64/linux/x86-64/static/libwpiutil.a")
+
+                }
+                
+            }
+        }
+    }
+
+    components {
+        main(NativeExecutableSpec) {
+            sources {
+                cpp.lib library: 'cscore', linkage: 'static'
+                cpp.lib library: 'ntcore', linkage: 'static'
+                cpp.lib library: 'opencv', linkage: 'static'
+                cpp.lib library: 'wpiutil', linkage: 'static'
+            }
+            
+        }
+    }
+    
+    binaries {
+        all {
+            if(toolChain in Gcc) {
+                cppCompiler.args "-pthread"
+                linker.args "-pthread"
+            }
+        }
+    } 
+
+}

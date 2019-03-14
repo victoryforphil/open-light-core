@@ -1,0 +1,9 @@
+-o
+/home/alex/open-light/open-light-core/build/exe/main/debug/main
+/home/alex/open-light/open-light-core/build/objs/main/debug/mainCpp/5v08dtn7cszvzrlgdayn1y9u6/main.o
+/home/alex/open-light/open-light-core/libs/cscore/linuxx86-64/libcscore.a
+/home/alex/open-light/open-light-core/libs/ntcore/linuxx86-64/libntcore.a
+/home/alex/open-light/open-light-core/libs/opencv-cpp/linuxx86-64/linux/x86-64/static/libopencv320.a
+/home/alex/open-light/open-light-core/libs/wpiutil-cpp/linuxx86-64/linux/x86-64/static/libwpiutil.a
+-pthread
+-m64

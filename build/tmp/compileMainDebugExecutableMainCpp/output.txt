@@ -1,0 +1,4 @@
+See file:///home/alex/open-light/open-light-core/build/tmp/compileMainDebugExecutableMainCpp/output.txt for all output for compileMainDebugExecutableMainCpp.
+compiling main.cpp successful.
+
+Finished compileMainDebugExecutableMainCpp, see full log file:///home/alex/open-light/open-light-core/build/tmp/compileMainDebugExecutableMainCpp/output.txt.

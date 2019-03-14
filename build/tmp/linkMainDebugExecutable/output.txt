@@ -1,0 +1,4 @@
+See file:///home/alex/open-light/open-light-core/build/tmp/linkMainDebugExecutable/output.txt for all output for linkMainDebugExecutable.
+linking main successful.
+
+Finished linkMainDebugExecutable, see full log file:///home/alex/open-light/open-light-core/build/tmp/linkMainDebugExecutable/output.txt.
