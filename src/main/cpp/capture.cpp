@@ -19,23 +19,43 @@ bool Capture::StartCapture(int cam)
             std::cout << "error: " << cvsink.GetError() << std::endl;
             continue;
         }
-        std::cout << "got frame at time " << time << " size " << inFrame.size()
-                  << std::endl;
+       // std::cout << "got frame at time " << time << " size " << inFrame.size()
+         //         << std::endl;
         RunPipelines(inFrame);
 
     }
     return true;
 }
-
+void Capture::UpdateResolution(int width, int height){
+    currentResolution.width = width;
+    currentResolution.height = height;
+}
 void Capture::RunPipelines(cv::Mat inputFrame){
-    for(int i=0;i<pipelines.size();i++){
-        pipelines[i]->runPipeline(inputFrame);
+    std::map<std::string, Pipeline*>::iterator itr;
+
+    for(itr = pipelines.begin(); itr != pipelines.end(); ++itr){
+        itr->second->runPipeline(inputFrame);
     }
 }
 
-int Capture::AddPipeline(Pipeline* pipeline){
-    pipelines.push_back(pipeline);
+int Capture::AddPipeline(std::string name, Pipeline* pipeline){
+    std::cout << "[Capture/AddPipeline] Adding pipeline: " << name << std::endl;
+    
+    pipelines.insert(std::pair<std::string, Pipeline*>(name, pipeline));
+   
     pipelineIndex++;
+
+    Networking::getInstance()->GetConfigTable()->PutBoolean("pipelines/"+name+"/enabled", true);
+    Networking::getInstance()->GetConfigTable()->PutBoolean("pipelines/"+name+"/streaming", false);
+    Networking::getInstance()->GetConfigTable()->PutNumber("pipelines/"+name+"/port", 0000);
     return pipelineIndex -1;
 }
 
+int Capture::StreamPipeline(std::string name, int port){
+    std::cout << "[Capture/StreamPipeline] Starting stream for pipeline: " << name << " on port: " << port << std::endl;
+    Pipeline* pipelineToStream = pipelines[name];
+    pipelineToStream->enableStream(name, port);
+    Networking::getInstance()->GetConfigTable()->PutBoolean("pipelines/"+name+"/streaming", true);
+    Networking::getInstance()->GetConfigTable()->PutNumber("pipelines/"+name+"/port", port);
+    Networking::getInstance()->GetConfigTable()->PutString("pipelines/"+name+"/stream_url", "localhost:"+std::to_string(port)+"/stream.mjpg");
+}

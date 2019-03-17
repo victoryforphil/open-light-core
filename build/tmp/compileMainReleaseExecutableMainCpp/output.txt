@@ -1,6 +1,7 @@
 See file:///home/alex/open-light/open-light-core/build/tmp/compileMainReleaseExecutableMainCpp/output.txt for all output for compileMainReleaseExecutableMainCpp.
-compiling ImgShowPipeline.cpp successful.
-
-compiling pipeline.cpp successful.
+compiling main.cpp successful.
+/home/alex/open-light/open-light-core/src/main/cpp/main.cpp:1:9: warning: #pragma once in main file
+ #pragma once
+         ^~~~
 
 Finished compileMainReleaseExecutableMainCpp, see full log file:///home/alex/open-light/open-light-core/build/tmp/compileMainReleaseExecutableMainCpp/output.txt.

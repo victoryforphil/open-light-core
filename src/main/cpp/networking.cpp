@@ -1,12 +1,30 @@
 #include "networking.h"
 
+Networking* Networking::instance = 0;
+
+Networking* Networking::getInstance(){
+  if(instance == 0){
+    instance = new Networking();
+  }
+
+  return instance;
+}
+
 bool Networking::StartConfigServer(uint port){
     std::cout << "[Networking/StartConfigServer] Starting Config NT Server on port: " << port <<std::endl;
-    ntInst->Create();
-    ntInst->AddLogger(LogNTMessage,nt::NetworkTableInstance::kLogDebug2, nt::NetworkTableInstance::kLogCritical);
-    ntInst->StartServer("conf11ig_nt.ini","127.0.0.1", port);
-    ntTable = ntInst->GetTable("openlight/config");
+    ntInst = (nt::NetworkTableInstance)nt::GetDefaultInstance();
+    
+    ntInst.AddLogger(LogNTMessage,nt::NetworkTableInstance::kLogCritical, nt::NetworkTableInstance::kLogDebug4);
+    ntInst.StartServer("1.ini","127.0.0.1", port);
+    ntTable = ntInst.GetTable("openlight/config");
     ntTable->PutBoolean("started", true);
+    
+
+    std::cout << "[Networking/StartConfigServer] Start Status: " << ntTable->GetBoolean("started",false) << std::endl;
+
+    std::cout << nt::GetDefaultInstance() << std::endl;
+    
+    
     return true;
 }
 

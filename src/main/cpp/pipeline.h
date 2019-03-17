@@ -6,7 +6,7 @@
 class Pipeline{
     public:
         cv::Mat runPipeline(cv::Mat inputFrame);
-        void enableStream(char*, int port);
+        void enableStream(std::string name, int port);
     protected:
         virtual cv::Mat process(cv::Mat) = 0;
 
