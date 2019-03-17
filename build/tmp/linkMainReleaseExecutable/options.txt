@@ -1,6 +1,15 @@
 -o
 /home/alex/open-light/open-light-core/build/exe/main/release/main
 /home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/5v08dtn7cszvzrlgdayn1y9u6/main.o
+/home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/67uzcxi386m20z3mvn7x4jbh7/capture.o
+/home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/2f6xowrnd755cxc0u9y21x5sx/ImgShowPipeline.o
+/home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/r2h5haet6p0pj7h2uteajts/ImgShowPipeline.o
+/home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/5dbk6phclqxiki2ajvp6u7dzx/pipeline.o
+/home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/4mv1ngschy2gq4hcjio8ynqnq/capture.o
+/home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/48b7q99h0fvg47jase2slzflj/Pi.o
+/home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/3aafv2igcx6vy30yu1ftm7pni/networking.o
+/home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/410c0gs7i7xm9k4s0oc9ioho5/networking.o
+/home/alex/open-light/open-light-core/build/objs/main/release/mainCpp/nrlnbjk2tpe3jprzx61fpm1b/pipeline.o
 /home/alex/open-light/open-light-core/libs/cscore/linuxx86-64/libcscore.a
 /home/alex/open-light/open-light-core/libs/ntcore/linuxx86-64/libntcore.a
 /home/alex/open-light/open-light-core/libs/opencv-cpp/linuxx86-64/linux/x86-64/static/libopencv320.a
